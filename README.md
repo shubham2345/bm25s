@@ -32,12 +32,32 @@ It is designed to be:
 * **Fast**: `bm25s` is implemented in pure Python and leverage Scipy sparse matrices to store eagerly computed scores for all document tokens. This allows extremely fast scoring at query time, improving performance over popular libraries by orders of magnitude (see benchmarks below).
 * **Simple**: `bm25s` is designed to be easy to use and understand. You can install it with pip and start using it in minutes. There is no dependencies on Java or Pytorch - all you need is Scipy and Numpy, and optional lightweight dependencies for stemming.
 
+
+# BM25 Baseline on HOTPOTQA
+## Results
+
+| Metric       | Value   |
+|--------------|---------|
+| **nDCG@10**  | 0.58516 |
+| **Recall@100** | 0.76928 |
+
+These results highlight the effectiveness of BM25 as a baseline retrieval model for HOTPOTQA. While BM25 provides robust performance, exploring advanced retrieval methods can further enhance the retrieval quality.
+
+## Benchmark Reference
+
+The results align with the data presented in the BEIR benchmark, as visualized below:
+
+![BEIR Benchmark](beir.png)
+
+![BEIR BENCHMARK](assets/beir.png)
+
 Below, we compare `bm25s` with Elasticsearch in terms of speedup over `rank-bm25`, the most popular Python implementation of BM25. We measure the throughput in queries per second (QPS) on a few popular datasets from [BEIR](https://github.com/beir-cellar/beir) in a single-threaded setting.
 
 ![comparison](assets/comparison.png)
 
 > [!IMPORTANT]
 > New in version 0.2.0: We are rolling out support for a numba backend, which gives around [2x speedup for larger datasets](https://github.com/xhluca/bm25-benchmarks?tab=readme-ov-file#queries-per-second)! Learn more about it and share your thoughts in [the version 0.2.0 release thread](https://github.com/xhluca/bm25s/discussions/58).
+
 
 
 <details open>

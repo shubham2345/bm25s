@@ -97,4 +97,4 @@ def run_benchmark(dataset, save_dir="datasets"):
     return ndcg, _map, recall, precision
 
 if __name__ == "__main__":
-  ndcg, _map, recall, precision = run_benchmark("scidocs")  # Change to dataset you want
+  ndcg, _map, recall, precision = run_benchmark("hotpotqa")  # Change to dataset you want
